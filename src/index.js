@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import firebase from "firebase";
 
 const style = {
   background: "black",
@@ -17,6 +18,24 @@ const Nav = s => {
     </div>
   );
 };
+
+
+
+function register(){
+  var email = document.getElementById("formEmailInput").value
+  var password = document.getElementById("formPasswordInput").value;
+  var confPassword = document.getElementById("confirmPasswordInput").value;
+  var userType = document.getElementById("userTypeSelector").value;
+  
+  if(password != confPassword){
+    window.alert("pass: " + password + ", confPass: " + confPassword);
+  }
+
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
+    window.alert(error.message);
+  });
+
+}
 
 const App = () => {
   return (
@@ -87,13 +106,13 @@ const App = () => {
                     <h3 class="mb-4 text-light">Sign up</h3>
                     <form>
                       <div class="form-group">
-                        <label className="text-light" for="exampleInputEmail1">
+                        <label className="text-light" for="formEmailInput">
                           Email
                         </label>
                         <input
                           type="email"
                           class="form-control"
-                          id="exampleInputEmail1"
+                          id="formEmailInput"
                           aria-describedby="emailHelp"
                           placeholder="Enter email"
                         />
@@ -104,41 +123,41 @@ const App = () => {
                       <div class="form-group">
                         <label
                           className="text-light"
-                          for="exampleInputPassword1"
+                          for="formPasswordInput"
                         >
                           Password
                         </label>
                         <input
                           type="password"
                           class="form-control"
-                          id="exampleInputPassword1"
+                          id="formPasswordInput"
                           placeholder="Password"
                         />
                       </div>
                       <div class="form-group">
                         <label
                           className="text-light"
-                          for="exampleInputPassword1"
+                          for="confirmPasswordInput"
                         >
                           Confirm Password
                         </label>
                         <input
                           type="password"
                           class="form-control"
-                          id="exampleInputPassword1"
+                          id="confirmPasswordInput"
                           placeholder="Confirm Password"
                         />
                       </div>
                       <div class="form-group">
                         <label
                           className="text-light"
-                          for="exampleFormControlSelect1"
+                          for="userTypeSelector"
                         >
                           User Type
                         </label>
                         <select
                           class="form-control"
-                          id="exampleFormControlSelect1"
+                          id="userTypeSelector"
                         >
                           <option className="text-light">
                             Select User Type
@@ -148,9 +167,7 @@ const App = () => {
                         </select>
                       </div>
                       <button
-                        class="g-recaptcha btn-sm btn-primary"
-                        data-sitekey="6LdpuW0UAAAAAAXPWyNefuH20Mfn_xnFz_uyxiom"
-                        data-callback="YourOnSubmitFn"
+                        class="btn btn-primary" onClick={() => register()}
                       >
                         Submit
                       </button>
