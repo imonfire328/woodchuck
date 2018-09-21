@@ -1,19 +1,21 @@
 import React from 'react';
 
 //components 
-import QuickDescription from '../components/quickDescription';
-import Registration from '../components/registration';
+// import QuickDescription from './components/quickDescription';
+// import Registration from './components/registration';
 
 
 const Landing = () => {
-    <div className="jumbotron bg-white">
-        <div className="container">
-            <div className="row">
-                <QuickDescription />
-                <Registration />
+    return(
+        <div className="jumbotron bg-white">
+            <div className="container">
+                <div className="row">
+                    
+                </div>
             </div>
         </div>
-    </div>
-};
+    )
+    
+}
 
 export default Landing;
