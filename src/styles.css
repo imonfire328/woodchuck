@@ -1,0 +1,11 @@
+.App {
+  font-family: 'Patua One';
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  float: left;
+  font-family: 'Patua One';
+  color: white;
+}
